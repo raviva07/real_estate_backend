@@ -11,6 +11,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
+
 @Configuration
 @EnableMethodSecurity   // ✅ REQUIRED FOR @PreAuthorize
 public class SecurityConfig {
@@ -27,6 +33,9 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
 
+            // ✅ ENABLE CORS
+            .cors(cors -> {})
+
             .sessionManagement(session ->
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
@@ -35,6 +44,7 @@ public class SecurityConfig {
 
                 // 🔓 PUBLIC
                 .requestMatchers(
+                        "/",
                         "/api/auth/**",
                         "/swagger-ui/**",
                         "/v3/api-docs/**"
@@ -57,4 +67,6 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+   
 }

@@ -16,8 +16,8 @@ public class CorsConfig {
 
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "http://localhost:5173",                // local
-                                "https://realestateappfrontend.netlify.app/"  // 🔥 ADD YOUR NETLIFY URL
+                                "http://localhost:5173",                
+                                "https://realestateappfrontend.netlify.app/" 
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
